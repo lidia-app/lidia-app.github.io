@@ -33,13 +33,14 @@
         <span>LidIA</span>
       </a>
       <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#providers">Providers</a>
-        <a href="https://medium.com/p/5d6cd137a191" target="_blank" rel="noopener">Story</a>
+        <a href="#features" data-i18n="nav.features">Features</a>
+        <a href="#how-it-works" data-i18n="nav.how">How It Works</a>
+        <a href="#providers" data-i18n="nav.providers">Providers</a>
+        <a href="https://medium.com/p/5d6cd137a191" target="_blank" rel="noopener" data-i18n="nav.story">Story</a>
         <a href="https://github.com/lidia-app/LidIA" target="_blank" rel="noopener" class="nav-github">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         </a>
+        <button id="lang-toggle" class="lang-toggle glass-pill" aria-label="Switch language">ES</button>
       </div>
     </div>
   </nav>
@@ -48,33 +49,33 @@
   <section class="hero">
     <div class="hero-badge glass-pill">
       <span class="badge-dot"></span>
-      Open Source &middot; MIT Licensed
+      <span data-i18n="hero.badge">Open Source &middot; MIT Licensed</span>
     </div>
-    <h1 class="hero-title">
+    <h1 class="hero-title" data-i18n-html="hero.title">
       Meeting intelligence<br>
       <span class="gradient-text">that stays on your Mac.</span>
     </h1>
-    <p class="hero-subtitle">
+    <p class="hero-subtitle" data-i18n="hero.subtitle">
       Transcribe, summarize, and chat with your meetings using local AI.
       No data leaves your device unless you choose.
     </p>
     <div class="hero-actions">
       <a href="https://github.com/lidia-app/LidIA/releases/latest" class="btn btn-primary glass-btn">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download for macOS
+        <span data-i18n="hero.download">Download for macOS</span>
       </a>
-      <a href="https://github.com/lidia-app/LidIA" class="btn btn-secondary glass-btn" target="_blank" rel="noopener">
+      <a href="https://github.com/lidia-app/LidIA" class="btn btn-secondary glass-btn" target="_blank" rel="noopener" data-i18n="hero.github">
         View on GitHub
       </a>
     </div>
-    <p class="hero-req">Requires macOS 26 (Tahoe) &middot; Apple Silicon recommended</p>
+    <p class="hero-req" data-i18n="hero.req">Requires macOS 26 (Tahoe) &middot; Apple Silicon recommended</p>
 
     <!-- App screenshots -->
     <div class="hero-screenshots">
       <div class="screenshot-tabs">
-        <button class="screenshot-tab active" data-target="ss-home">Home</button>
-        <button class="screenshot-tab" data-target="ss-summary">Summary</button>
-        <button class="screenshot-tab" data-target="ss-actions">Action Items</button>
+        <button class="screenshot-tab active" data-target="ss-home" data-i18n="tabs.home">Home</button>
+        <button class="screenshot-tab" data-target="ss-summary" data-i18n="tabs.summary">Summary</button>
+        <button class="screenshot-tab" data-target="ss-actions" data-i18n="tabs.actions">Action Items</button>
       </div>
 
       <!-- Home: Dark/Light comparison slider -->
@@ -92,8 +93,8 @@
             <div class="handle-line"></div>
           </div>
           <div class="comparison-labels">
-            <span class="comparison-label label-dark">Dark</span>
-            <span class="comparison-label label-light">Light</span>
+            <span class="comparison-label label-dark" data-i18n="slider.dark">Dark</span>
+            <span class="comparison-label label-light" data-i18n="slider.light">Light</span>
           </div>
         </div>
       </div>
@@ -117,56 +118,56 @@
   <!-- Features -->
   <section id="features" class="features">
     <div class="section-inner">
-      <h2 class="section-title">Everything happens <span class="gradient-text">on your device.</span></h2>
-      <p class="section-subtitle">No servers, no subscriptions, no data collection. Just your meetings, your Mac, your AI.</p>
+      <h2 class="section-title" data-i18n-html="features.title">Everything happens <span class="gradient-text">on your device.</span></h2>
+      <p class="section-subtitle" data-i18n="features.subtitle">No servers, no subscriptions, no data collection. Just your meetings, your Mac, your AI.</p>
 
       <div class="feature-grid">
         <div class="feature-card glass-card">
           <div class="feature-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
           </div>
-          <h3>Real-Time Transcription</h3>
-          <p>Parakeet, WhisperKit, or Apple Speech — all running on your Mac. No audio ever leaves your device.</p>
+          <h3 data-i18n="feat.transcription">Real-Time Transcription</h3>
+          <p data-i18n="feat.transcription.desc">Parakeet, WhisperKit, or Apple Speech — all running on your Mac. No audio ever leaves your device.</p>
         </div>
 
         <div class="feature-card glass-card">
           <div class="feature-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 00-6 0v4"/><rect x="2" y="9" width="20" height="12" rx="2"/><circle cx="12" cy="15" r="2"/></svg>
           </div>
-          <h3>Private by Default</h3>
-          <p>All data stored locally via SwiftData. API keys in macOS Keychain. Zero telemetry. Zero analytics.</p>
+          <h3 data-i18n="feat.private">Private by Default</h3>
+          <p data-i18n="feat.private.desc">All data stored locally via SwiftData. API keys in macOS Keychain. Zero telemetry. Zero analytics.</p>
         </div>
 
         <div class="feature-card glass-card">
           <div class="feature-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
           </div>
-          <h3>AI Summaries</h3>
-          <p>Automatic titles, multi-section summaries, key decisions, and action items — powered by local MLX or cloud LLMs.</p>
+          <h3 data-i18n="feat.summaries">AI Summaries</h3>
+          <p data-i18n="feat.summaries.desc">Automatic titles, multi-section summaries, key decisions, and action items — powered by local MLX or cloud LLMs.</p>
         </div>
 
         <div class="feature-card glass-card">
           <div class="feature-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
           </div>
-          <h3>Chat With Meetings</h3>
-          <p>Ask questions about any meeting. "What did we decide about the API?" — instant answers from your transcripts.</p>
+          <h3 data-i18n="feat.chat">Chat With Meetings</h3>
+          <p data-i18n="feat.chat.desc">Ask questions about any meeting. "What did we decide about the API?" — instant answers from your transcripts.</p>
         </div>
 
         <div class="feature-card glass-card">
           <div class="feature-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
           </div>
-          <h3>Action Items</h3>
-          <p>Auto-extracted with priority levels and deadlines. Route to Notion, ClickUp, Apple Reminders, or n8n webhooks.</p>
+          <h3 data-i18n="feat.actions">Action Items</h3>
+          <p data-i18n="feat.actions.desc">Auto-extracted with priority levels and deadlines. Route to Notion, ClickUp, Apple Reminders, or n8n webhooks.</p>
         </div>
 
         <div class="feature-card glass-card">
           <div class="feature-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
           </div>
-          <h3>Voice Assistant</h3>
-          <p>Push-to-talk with an animated orb UI. Ask about your action items, upcoming meetings, or past discussions — fully local.</p>
+          <h3 data-i18n="feat.voice">Voice Assistant</h3>
+          <p data-i18n="feat.voice.desc">Push-to-talk with an animated orb UI. Ask about your action items, upcoming meetings, or past discussions — fully local.</p>
         </div>
       </div>
     </div>
@@ -175,28 +176,28 @@
   <!-- How It Works -->
   <section id="how-it-works" class="how-it-works">
     <div class="section-inner">
-      <h2 class="section-title">Three steps. <span class="gradient-text">Zero config.</span></h2>
+      <h2 class="section-title" data-i18n-html="steps.title">Three steps. <span class="gradient-text">Zero config.</span></h2>
       <div class="steps">
         <div class="step glass-card">
           <div class="step-number">1</div>
-          <h3>Download & Launch</h3>
-          <p>Clone the repo and run <code>./run.sh</code>. Or download the DMG from GitHub Releases. Works out of the box — no API keys needed.</p>
+          <h3 data-i18n="step1.title">Download & Launch</h3>
+          <p data-i18n-html="step1.desc">Clone the repo and run <code>./run.sh</code>. Or download the DMG from GitHub Releases. Works out of the box — no API keys needed.</p>
         </div>
         <div class="step-arrow" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
         <div class="step glass-card">
           <div class="step-number">2</div>
-          <h3>Record a Meeting</h3>
-          <p>Click record on any calendar event — or start a quick note. A floating transcript shows words as they're captured.</p>
+          <h3 data-i18n="step2.title">Record a Meeting</h3>
+          <p data-i18n="step2.desc">Click record on any calendar event — or start a quick note. A floating transcript shows words as they're captured.</p>
         </div>
         <div class="step-arrow" aria-hidden="true">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </div>
         <div class="step glass-card">
           <div class="step-number">3</div>
-          <h3>Get Intelligence</h3>
-          <p>LidIA refines the transcript, generates a summary, and extracts action items — all automatically when you stop recording.</p>
+          <h3 data-i18n="step3.title">Get Intelligence</h3>
+          <p data-i18n="step3.desc">LidIA refines the transcript, generates a summary, and extracts action items — all automatically when you stop recording.</p>
         </div>
       </div>
     </div>
@@ -205,54 +206,54 @@
   <!-- Providers -->
   <section id="providers" class="providers">
     <div class="section-inner">
-      <h2 class="section-title">Your choice of <span class="gradient-text">AI providers.</span></h2>
-      <p class="section-subtitle">Local by default. Cloud when you want it.</p>
+      <h2 class="section-title" data-i18n-html="providers.title">Your choice of <span class="gradient-text">AI providers.</span></h2>
+      <p class="section-subtitle" data-i18n="providers.subtitle">Local by default. Cloud when you want it.</p>
 
       <div class="provider-grid">
         <div class="provider-group">
-          <h3 class="provider-group-label">Speech-to-Text</h3>
+          <h3 class="provider-group-label" data-i18n="providers.stt">Speech-to-Text</h3>
           <div class="provider-card glass-card">
             <div class="provider-name">Parakeet</div>
-            <div class="provider-tag local">Local</div>
-            <div class="provider-desc">NVIDIA's streaming ASR — best accuracy</div>
+            <div class="provider-tag local" data-i18n="tag.local">Local</div>
+            <div class="provider-desc" data-i18n="prov.parakeet">NVIDIA's streaming ASR — best accuracy</div>
           </div>
           <div class="provider-card glass-card">
             <div class="provider-name">WhisperKit</div>
-            <div class="provider-tag local">Local</div>
-            <div class="provider-desc">OpenAI Whisper on Apple Silicon</div>
+            <div class="provider-tag local" data-i18n="tag.local">Local</div>
+            <div class="provider-desc" data-i18n="prov.whisper">OpenAI Whisper on Apple Silicon</div>
           </div>
           <div class="provider-card glass-card">
             <div class="provider-name">Apple Speech</div>
-            <div class="provider-tag local">Local</div>
-            <div class="provider-desc">Built-in, no download needed</div>
+            <div class="provider-tag local" data-i18n="tag.local">Local</div>
+            <div class="provider-desc" data-i18n="prov.apple">Built-in, no download needed</div>
           </div>
         </div>
         <div class="provider-group">
-          <h3 class="provider-group-label">LLM Providers</h3>
+          <h3 class="provider-group-label" data-i18n="providers.llm">LLM Providers</h3>
           <div class="provider-card glass-card">
             <div class="provider-name">MLX</div>
-            <div class="provider-tag local">Local</div>
-            <div class="provider-desc">On-device inference — free, private</div>
+            <div class="provider-tag local" data-i18n="tag.local">Local</div>
+            <div class="provider-desc" data-i18n="prov.mlx">On-device inference — free, private</div>
           </div>
           <div class="provider-card glass-card">
             <div class="provider-name">Ollama</div>
-            <div class="provider-tag local">Local</div>
-            <div class="provider-desc">Run larger models locally</div>
+            <div class="provider-tag local" data-i18n="tag.local">Local</div>
+            <div class="provider-desc" data-i18n="prov.ollama">Run larger models locally</div>
           </div>
           <div class="provider-card glass-card">
             <div class="provider-name">OpenAI</div>
-            <div class="provider-tag cloud">Cloud</div>
-            <div class="provider-desc">GPT-4o — highest quality</div>
+            <div class="provider-tag cloud" data-i18n="tag.cloud">Cloud</div>
+            <div class="provider-desc" data-i18n="prov.openai">GPT-4o — highest quality</div>
           </div>
           <div class="provider-card glass-card">
             <div class="provider-name">Anthropic</div>
-            <div class="provider-tag cloud">Cloud</div>
-            <div class="provider-desc">Claude — nuanced understanding</div>
+            <div class="provider-tag cloud" data-i18n="tag.cloud">Cloud</div>
+            <div class="provider-desc" data-i18n="prov.anthropic">Claude — nuanced understanding</div>
           </div>
           <div class="provider-card glass-card">
             <div class="provider-name">Cerebras</div>
-            <div class="provider-tag free">Free</div>
-            <div class="provider-desc">1M tokens/day free tier</div>
+            <div class="provider-tag free" data-i18n="tag.free">Free</div>
+            <div class="provider-desc" data-i18n="prov.cerebras">1M tokens/day free tier</div>
           </div>
         </div>
       </div>
@@ -262,7 +263,7 @@
   <!-- Integrations -->
   <section class="integrations">
     <div class="section-inner">
-      <h2 class="section-title">Connects to your <span class="gradient-text">workflow.</span></h2>
+      <h2 class="section-title" data-i18n-html="integrations.title">Connects to your <span class="gradient-text">workflow.</span></h2>
       <div class="integration-row">
         <div class="integration-pill glass-pill">Google Calendar</div>
         <div class="integration-pill glass-pill">Apple Calendar</div>
@@ -279,13 +280,13 @@
     <div class="section-inner">
       <div class="cta-card glass-card">
         <img src="logo.svg" alt="LidIA" width="64" height="64" class="cta-logo">
-        <h2>Ready to own your meeting data?</h2>
-        <p>Free. Open source. Runs entirely on your Mac.</p>
+        <h2 data-i18n="cta.title">Ready to own your meeting data?</h2>
+        <p data-i18n="cta.subtitle">Free. Open source. Runs entirely on your Mac.</p>
         <div class="hero-actions">
-          <a href="https://github.com/lidia-app/LidIA/releases/latest" class="btn btn-primary glass-btn">
+          <a href="https://github.com/lidia-app/LidIA/releases/latest" class="btn btn-primary glass-btn" data-i18n="cta.download">
             Download DMG
           </a>
-          <a href="https://github.com/lidia-app/LidIA" class="btn btn-secondary glass-btn" target="_blank" rel="noopener">
+          <a href="https://github.com/lidia-app/LidIA" class="btn btn-secondary glass-btn" target="_blank" rel="noopener" data-i18n="cta.star">
             Star on GitHub
           </a>
         </div>
@@ -301,17 +302,18 @@
           <img src="logo.svg" alt="LidIA" width="24" height="24">
           <span>LidIA</span>
           <span class="footer-sep">&middot;</span>
-          <span class="footer-muted">Named after my mom. Built with love.</span>
+          <span class="footer-muted" data-i18n="footer.tagline">Named after my mom. Built with love.</span>
         </div>
         <div class="footer-links">
           <a href="https://github.com/lidia-app/LidIA" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://medium.com/p/5d6cd137a191" target="_blank" rel="noopener">Story</a>
-          <a href="https://github.com/lidia-app/LidIA/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+          <a href="https://medium.com/p/5d6cd137a191" target="_blank" rel="noopener" data-i18n="nav.story">Story</a>
+          <a href="https://github.com/lidia-app/LidIA/blob/main/LICENSE" target="_blank" rel="noopener" data-i18n="footer.license">MIT License</a>
         </div>
       </div>
     </div>
   </footer>
 
+  <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
