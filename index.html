@@ -20,69 +20,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Liquid Glass: canvas-generated displacement map + SVG filter -->
-  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <filter id="liquid-glass-nav" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB" x="0" y="0" width="1100" height="52">
-        <feImage id="lg-feimage" width="1100" height="52" result="dispMap"/>
-        <feGaussianBlur in="dispMap" stdDeviation="2" result="dispSmooth"/>
-        <feDisplacementMap in="SourceGraphic" in2="dispSmooth" scale="14" xChannelSelector="R" yChannelSelector="G"/>
-      </filter>
-    </defs>
-  </svg>
-  <canvas id="lg-canvas" width="1100" height="52" style="display:none"></canvas>
-  <script>
-  // Generate displacement map on a hidden canvas, feed into SVG filter
-  (function() {
-    const W = 1100, H = 52, R = 26;
-    const c = document.getElementById('lg-canvas');
-    const ctx = c.getContext('2d');
-
-    // Rounded rect SDF for edge detection
-    function sdf(x, y) {
-      const cx = W / 2, cy = H / 2, hw = W / 2 - R, hh = H / 2 - R;
-      const dx = Math.abs(x - cx) - hw, dy = Math.abs(y - cy) - hh;
-      const outside = Math.sqrt(Math.max(dx, 0) ** 2 + Math.max(dy, 0) ** 2) - R;
-      const inside = Math.min(Math.max(dx, dy), 0);
-      return outside + inside;
-    }
-
-    function smoothstep(a, b, t) {
-      t = Math.max(0, Math.min(1, (t - a) / (b - a)));
-      return t * t * (3 - 2 * t);
-    }
-
-    const img = ctx.createImageData(W, H);
-    for (let y = 0; y < H; y++) {
-      for (let x = 0; x < W; x++) {
-        const d = sdf(x, y);
-        // Edge band: refraction strongest at borders, neutral in center
-        const edge = smoothstep(0, -12, d); // 1 inside, 0 outside
-        const border = smoothstep(-2, -10, d) * (1 - smoothstep(-10, -20, d)); // ring at edge
-
-        // Displacement: neutral = 128, push outward at edges
-        const nx = (x - W / 2) / (W / 2); // normalized -1..1
-        const ny = (y - H / 2) / (H / 2);
-        const pushX = nx * border * 0.4;
-        const pushY = ny * border * 0.5;
-
-        const r = Math.round(128 + pushX * 127);
-        const g = Math.round(128 + pushY * 127);
-
-        const i = (y * W + x) * 4;
-        img.data[i] = r;       // Red = X displacement
-        img.data[i + 1] = g;   // Green = Y displacement
-        img.data[i + 2] = 128; // Blue unused
-        img.data[i + 3] = 255; // Alpha
-      }
-    }
-    ctx.putImageData(img, 0, 0);
-
-    // Feed canvas data URL into SVG feImage
-    const dataURL = c.toDataURL();
-    document.getElementById('lg-feimage').setAttribute('href', dataURL);
-  })();
-  </script>
+  <!-- No heavy SVG filters — clean glassmorphism that works everywhere -->
 
   <!-- Animated background orbs -->
   <div class="bg-orbs" aria-hidden="true">

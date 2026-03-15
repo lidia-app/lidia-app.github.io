@@ -107,36 +107,24 @@ document.querySelectorAll('.screenshot-tab').forEach((tab) => {
   });
 })();
 
-// Nav: hide on scroll down, show on scroll up, compact after hero
+// Nav: compact on scroll, hide on fast scroll down, show on scroll up
 (function() {
   const navEl = document.querySelector('.nav');
   let lastY = 0;
-  let ticking = false;
 
   window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => {
-        const y = window.scrollY;
-        const delta = y - lastY;
+    const y = window.scrollY;
 
-        // Hide when scrolling down past hero, show when scrolling up
-        if (delta > 8 && y > 300) {
-          navEl.classList.add('nav-hidden');
-        } else if (delta < -5) {
-          navEl.classList.remove('nav-hidden');
-        }
+    // Compact after leaving hero
+    navEl.classList.toggle('nav-compact', y > 100);
 
-        // Compact mode after scrolling past hero
-        if (y > 80) {
-          navEl.classList.add('nav-compact');
-        } else {
-          navEl.classList.remove('nav-compact');
-        }
-
-        lastY = y;
-        ticking = false;
-      });
-      ticking = true;
+    // Hide on scroll down (past hero), show on scroll up
+    if (y > 400 && y - lastY > 10) {
+      navEl.classList.add('nav-hidden');
+    } else if (lastY - y > 5 || y < 100) {
+      navEl.classList.remove('nav-hidden');
     }
+
+    lastY = y;
   }, { passive: true });
 })();
