@@ -20,25 +20,39 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- SVG filters for liquid glass lensing -->
-  <svg style="position:absolute;width:0;height:0" aria-hidden="true">
+  <!-- SVG Liquid Glass filter: displacement map for edge refraction -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
-      <!-- Refraction distortion filter -->
-      <filter id="glass-refract" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
-        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="3" seed="5" result="warp"/>
-        <feDisplacementMap in="SourceGraphic" in2="warp" scale="2.5" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
-        <!-- Chromatic aberration: split RGB channels -->
-        <feOffset in="displaced" dx="0.4" dy="0" result="r"/>
-        <feOffset in="displaced" dx="-0.4" dy="0" result="b"/>
-        <feBlend in="r" in2="b" mode="screen" result="aberration"/>
-        <feComposite in="aberration" in2="SourceGraphic" operator="atop"/>
-      </filter>
-      <!-- Specular highlight for glass edge -->
-      <filter id="glass-sheen">
-        <feSpecularLighting surfaceScale="2" specularConstant="0.6" specularExponent="30" result="sheen">
-          <fePointLight x="200" y="-50" z="150"/>
-        </feSpecularLighting>
-        <feComposite in="SourceGraphic" in2="sheen" operator="arithmetic" k1="0" k2="1" k3="0.15" k4="0"/>
+      <!-- Displacement map: rounded rect with edge gradients for refraction -->
+      <svg id="nav-displacement-map" xmlns="http://www.w3.org/2000/svg" width="1100" height="52" viewBox="0 0 1100 52">
+        <defs>
+          <linearGradient id="dx" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#00" />
+            <stop offset="4%" stop-color="#80" />
+            <stop offset="96%" stop-color="#80" />
+            <stop offset="100%" stop-color="#FF" />
+          </linearGradient>
+          <linearGradient id="dy" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#00" />
+            <stop offset="15%" stop-color="#80" />
+            <stop offset="85%" stop-color="#80" />
+            <stop offset="100%" stop-color="#FF" />
+          </linearGradient>
+          <mask id="navMask">
+            <rect width="1100" height="52" rx="26" fill="white"/>
+          </mask>
+        </defs>
+        <!-- X displacement (red channel) -->
+        <rect width="1100" height="52" fill="url(#dx)" mask="url(#navMask)" />
+        <!-- Y displacement (green channel via opacity blend) -->
+        <rect width="1100" height="52" fill="url(#dy)" mask="url(#navMask)" opacity="0.5" style="mix-blend-mode: screen"/>
+      </svg>
+
+      <!-- Liquid Glass filter applied via backdrop-filter -->
+      <filter id="liquid-glass-nav" x="0" y="0" width="100%" height="100%" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feImage href="#nav-displacement-map" width="1100" height="52" result="dispMap"/>
+        <feGaussianBlur in="dispMap" stdDeviation="3" result="dispMapBlurred"/>
+        <feDisplacementMap in="SourceGraphic" in2="dispMapBlurred" scale="18" xChannelSelector="R" yChannelSelector="G"/>
       </filter>
     </defs>
   </svg>
