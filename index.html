@@ -20,6 +20,16 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- SVG filter for liquid glass lensing -->
+  <svg style="position:absolute;width:0;height:0" aria-hidden="true">
+    <defs>
+      <filter id="liquid-glass" x="-10%" y="-10%" width="120%" height="120%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="3" seed="2" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </defs>
+  </svg>
+
   <!-- Animated background orbs -->
   <div class="bg-orbs" aria-hidden="true">
     <div class="orb orb-1"></div>
