@@ -170,6 +170,27 @@ body {
   right: 0;
   z-index: 100;
   padding: 12px 24px;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s;
+}
+
+.nav.nav-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.nav.nav-compact .nav-inner {
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+.nav.nav-compact .nav-logo span,
+.nav.nav-compact .nav-links a:not(.nav-github) {
+  font-size: 13px;
+}
+
+.nav.nav-compact .lang-toggle {
+  font-size: 11px;
+  padding: 3px 10px;
 }
 
 .nav-inner {
@@ -182,19 +203,52 @@ body {
   position: relative;
   border-radius: 26px;
   overflow: hidden;
-  /* Liquid Glass: SVG displacement for refraction + blur + saturation */
+  /* Liquid Glass */
   backdrop-filter: url(#liquid-glass-nav) blur(0.5px) contrast(1.2) brightness(1.05) saturate(1.15);
   -webkit-backdrop-filter: blur(40px) saturate(1.8) brightness(1.05);
   background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid transparent;
   box-shadow:
     0 1px 0 0 rgba(255,255,255,0.12) inset,
     0 -1px 0 0 rgba(255,255,255,0.04) inset,
     0 4px 20px -4px rgba(0,0,0,0.45);
-  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: padding 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              border-radius 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s, transform 0.35s;
 }
 
-/* Specular highlight — simulates light caustic across glass */
+/* Animated gradient border */
+.nav-inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    var(--border-angle, 135deg),
+    rgba(255,79,163,0.3),
+    rgba(124,58,237,0.15),
+    rgba(16,203,234,0.3),
+    rgba(255,255,255,0.08)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: border-rotate 8s linear infinite;
+}
+
+@keyframes border-rotate {
+  to { --border-angle: 495deg; }
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 135deg;
+  inherits: false;
+}
+
+/* Specular caustic — animated light streak */
 .nav-inner::before {
   content: '';
   position: absolute;
@@ -202,27 +256,36 @@ body {
   border-radius: inherit;
   background: linear-gradient(
     108deg,
-    transparent 32%,
-    rgba(255,255,255,0.05) 43%,
-    rgba(255,255,255,0.1) 45%,
-    rgba(255,255,255,0.05) 47%,
-    transparent 56%
+    transparent 30%,
+    rgba(255,255,255,0.04) 42%,
+    rgba(255,255,255,0.1) 44.5%,
+    rgba(255,255,255,0.04) 47%,
+    transparent 58%
   );
   pointer-events: none;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: sheen-drift 6s ease-in-out infinite alternate;
+}
+
+@keyframes sheen-drift {
+  0% { transform: translateX(-15px); }
+  100% { transform: translateX(15px); }
 }
 
 .nav-inner:hover {
-  border-color: rgba(255,255,255,0.18);
   box-shadow:
     0 1px 0 0 rgba(255,255,255,0.18) inset,
     0 -1px 0 0 rgba(255,255,255,0.06) inset,
-    0 6px 28px -4px rgba(0,0,0,0.5);
+    0 8px 32px -4px rgba(0,0,0,0.5);
   transform: translateY(-1px);
 }
 
 .nav-inner:hover::before {
+  animation-play-state: paused;
   transform: translateX(25px);
+}
+
+.nav-inner:hover::after {
+  animation-duration: 3s;
 }
 
 .nav-logo {
