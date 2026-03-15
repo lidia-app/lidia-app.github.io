@@ -20,12 +20,25 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- SVG filter for liquid glass lensing -->
+  <!-- SVG filters for liquid glass lensing -->
   <svg style="position:absolute;width:0;height:0" aria-hidden="true">
     <defs>
-      <filter id="liquid-glass" x="-10%" y="-10%" width="120%" height="120%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="3" seed="2" result="noise"/>
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+      <!-- Refraction distortion filter -->
+      <filter id="glass-refract" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="3" seed="5" result="warp"/>
+        <feDisplacementMap in="SourceGraphic" in2="warp" scale="2.5" xChannelSelector="R" yChannelSelector="G" result="displaced"/>
+        <!-- Chromatic aberration: split RGB channels -->
+        <feOffset in="displaced" dx="0.4" dy="0" result="r"/>
+        <feOffset in="displaced" dx="-0.4" dy="0" result="b"/>
+        <feBlend in="r" in2="b" mode="screen" result="aberration"/>
+        <feComposite in="aberration" in2="SourceGraphic" operator="atop"/>
+      </filter>
+      <!-- Specular highlight for glass edge -->
+      <filter id="glass-sheen">
+        <feSpecularLighting surfaceScale="2" specularConstant="0.6" specularExponent="30" result="sheen">
+          <fePointLight x="200" y="-50" z="150"/>
+        </feSpecularLighting>
+        <feComposite in="SourceGraphic" in2="sheen" operator="arithmetic" k1="0" k2="1" k3="0.15" k4="0"/>
       </filter>
     </defs>
   </svg>
